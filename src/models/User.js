@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose=require('mongoose');
 
-const userSchema = new mongoose.Schema({
+const userSchema=new mongoose.Schema({
     name:{
         type:String,
         required:true
@@ -19,12 +19,16 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    role:{
+        type:String,
+        enum:["LIBRARIAN","STUDENT"],
+        default:"STUDENT"
+    },
     createdAt:{
         type:Date,
         default:Date.now
     }
 });
 
-const User = mongoose.model('User', userSchema);
-
-module.exports = User;
+const User= new mongoose.model("User",userSchema);
+module.exports=User;

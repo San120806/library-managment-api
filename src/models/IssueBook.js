@@ -1,32 +1,41 @@
-const mongoose = require('express');
+const mongoose=require('mongoose');
 
-const issueBookSchema = new mongoose.Schema({
-    bookId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Book',
-        required: true
+const issueBookSchema=new mongoose.Schema({
+    bookId:{
+        type:String,
+        required:true
     },
-    userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
+    bookName:{
+        type:String,
+        required:true
     },
-    issueDate: {
-        type: Date,
-        default: Date.now,
-        required: true
+    studentId:{
+        type:String,
+        required:true
     },
-    returnDate: {
-        type: Date
+    studentName:{
+        type:String,
+        required:true
     },
-    status: {
-        type: String,
-        enum: ['issued', 'returned', 'overdue'],
-        default: 'issued',
-        required: true
+    issueDate:{
+        type:Date,
+        default:Date.now
+    },
+    returnDate:{
+        type:Date,
+        default:Date.now
+    },
+    status:{
+        type:String,
+        enum:["Issued","Returned"],
+        default:"Issued"
+    },
+    createdAt:{
+        type:Date,
+        default:Date.now
     }
 });
 
-const IssueBook = mongoose.model('IssueBook', issueBookSchema);
+const IssueBook=new mongoose.model("IssueBook",issueBookSchema);
 
-module.exports = IssueBook;
+module.exports=IssueBook;
