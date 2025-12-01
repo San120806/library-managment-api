@@ -5,7 +5,7 @@ const Book=require('../models/Book');
 getAllBooks=async (request,response)=>{
     try {
         const books=await Book.find();
-        response.status(200).json(books);
+        response.status(200).json(book);
     } catch (error) {
         response.status(500).json({message:error.message});
     }
