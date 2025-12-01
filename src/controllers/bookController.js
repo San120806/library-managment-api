@@ -32,7 +32,7 @@ createBook=async (request,response)=>{
         }
 
         const newBook={
-            id:books.length+1,
+            
             title,
             author,
             publishedYear,
@@ -40,6 +40,8 @@ createBook=async (request,response)=>{
             quantity,
             status:"Available"
         };
+
+        console.log(newBook);
 
         const book=new Book(newBook);
         await book.save();
